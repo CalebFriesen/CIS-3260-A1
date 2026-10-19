@@ -1,19 +1,20 @@
 require_relative 'DiceHand'
 
 class Player
-    attr_reader :name, :score, :dice_count
+    attr_reader :name, :score, :dice_count, :eliminated
 
     def initialize(name, dice_count, sides)
         @name = name
         @dice_hand = DiceHand.new(dice_count, sides)
         @score = 0
         @dice_count = dice_count
+        @eliminated = false
     end
 
     def take_turn
         turn_over = false
 
-        until turn_over == true
+        until turn_over
             roll = @dice_hand.roll
             roll_value = 0
             removed_dice = @dice_hand.remove_dice
@@ -34,11 +35,10 @@ class Player
     end
 
     def elimination_check
-        eliminated = false
         if @dice_count == 0
-            eliminated = true
+            @eliminated = true
             puts "#{name} has run out of dice and finishes with a score of #{@score}\n\n"
         end
-        eliminated
+        @eliminated
     end
 end
