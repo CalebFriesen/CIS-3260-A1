@@ -19,8 +19,12 @@ class AutoDropDead
                 end
             end
         end
+
+        puts "Final scores"
         
         players.each do |player|
+            
+            puts "#{player.name}: #{player.score}"
             if player.score > high_score
                 high_score = player.score
             end
@@ -34,15 +38,15 @@ class AutoDropDead
 
         if winners.length == 1
             if high_score == 1
-                puts "#{winners[0]} wins with 1 point!"
+                puts "\n#{winners[0]} wins with 1 point!"
             else
-                puts "#{winners[0]} wins with #{high_score} points!"
+                puts "\n#{winners[0]} wins with #{high_score} points!"
             end
         else
             if high_score == 1
-                puts "#{winners.join(', ')} wins with 1 point!"
+                puts "\n#{winners.join(', ')} wins with 1 point!"
             else
-                puts "#{winners.join(', ')} win with #{high_score} points!"
+                puts "\n#{winners.join(', ')} win with #{high_score} points!"
             end
         end
     end
