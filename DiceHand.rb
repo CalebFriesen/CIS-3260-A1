@@ -13,6 +13,7 @@ class DiceHand
     def roll
         end_turn = false
         roll_total = 0
+        dead_die = 0
         @total = 0
 
         until endTurn == true
@@ -22,8 +23,9 @@ class DiceHand
                 die_value = die.roll
                 if die_value == 2 || die_value == 5
                     end_turn = true
+                    dead_die += 1
                 end
-                roll_total += dieValue
+                roll_total += die_value
             end
         end
     end
