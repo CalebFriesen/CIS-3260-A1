@@ -7,26 +7,34 @@ class DiceHand
         (1..numDie).each do |i|
             @dice << Die.new(sides)
         end
-        @total = nil
     end
 
     def roll
-        end_turn = false
-        roll_total = 0
-        dead_die = 0
-        @total = 0
+        dice_values = []
+        @dice.each do |die|
+            dice_values << die.roll
+        end
+        dice_values
+    end
 
-        until endTurn == true
-            @total += roll_total
-            roll_total = 0
-            @dice.each do |die|
-                die_value = die.roll
-                if die_value == 2 || die_value == 5
-                    end_turn = true
-                    dead_die += 1
-                end
-                roll_total += die_value
+    def total
+        total = 0
+        @dice.each do |die|
+            total += die.value
+        end
+        total
+    end
+
+    def remove_dice
+        dead_dice = []
+        num_removed = 0
+        @dice.each do |die|
+            if die.value == 2 || die.value == 5
+                dead_dice << die
+                num_removed += 1
             end
         end
+        @dice -= dead_dice
+        num_removed
     end
 end
