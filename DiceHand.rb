@@ -1,7 +1,7 @@
 require_relative 'Die'
 
 class DiceHand
-    attr_reader :total, :dice
+    attr_reader :dice
     def initialize(dice_count, sides)
         @dice = []
         (1..dice_count).each do |i|

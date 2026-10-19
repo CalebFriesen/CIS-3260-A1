@@ -44,7 +44,7 @@ class AutoDropDead
             end
         else
             if high_score == 1
-                puts "\n#{winners.join(', ')} wins with 1 point!"
+                puts "\n#{winners.join(', ')} win with 1 point!"
             else
                 puts "\n#{winners.join(', ')} win with #{high_score} points!"
             end
